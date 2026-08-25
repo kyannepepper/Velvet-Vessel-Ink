@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Velvet Vessel Ink</title>
+<meta name="description" content="Browse Megan Klein's completed tattoo work at Velvet Vessel Ink — fine line, floral, realism, black &amp; gray, and lettering tattoos. Filter by style, placement, size, and price.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body data-page="portfolio" data-solid-header="true">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header"></header>
+
+<main id="main">
+  <section class="page-hero page-hero--sm">
+    <div class="container">
+      <p class="eyebrow">Completed Work</p>
+      <h1>Portfolio</h1>
+      <p class="lead">Every piece below has been tattooed in the studio. Find a style you love and use it as the starting point for your own request.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight portfolio-section">
+    <div class="container">
+
+      <div class="filter-bar" role="search" aria-label="Filter portfolio">
+        <div class="field search-field">
+          <label for="portfolio-search">Search</label>
+          <input type="text" id="portfolio-search" placeholder="Search by title or description&hellip;">
+        </div>
+        <div class="filter-row">
+          <div class="field">
+            <label for="filter-style">Style</label>
+            <select id="filter-style"><option value="">All Styles</option></select>
+          </div>
+          <div class="field">
+            <label for="filter-placement">Placement</label>
+            <select id="filter-placement"><option value="">All Placements</option></select>
+          </div>
+          <div class="field">
+            <label for="filter-size">Size</label>
+            <select id="filter-size">
+              <option value="">All Sizes</option>
+              <option value="Small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-price">Price</label>
+            <select id="filter-price">
+              <option value="">Any Price</option>
+              <option value="0-200">Under $200</option>
+              <option value="200-400">$200 &ndash; $400</option>
+              <option value="400-700">$400 &ndash; $700</option>
+              <option value="700-99999">$700+</option>
+            </select>
+          </div>
+          <button class="btn-ghost" id="clear-filters" type="button">Clear</button>
+        </div>
+      </div>
+
+      <p class="results-count" id="results-count" aria-live="polite"></p>
+
+      <div class="portfolio-grid" id="portfolio-grid">
+        <div class="loading-state"><div class="spinner"></div>Loading portfolio&hellip;</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="portfolio-overlay">
+  <div class="modal detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title" id="portfolio-modal">
+    <button class="modal-close" id="portfolio-modal-close" aria-label="Close">&times;</button>
+    <div class="detail-grid">
+      <div class="detail-media">
+        <img id="detail-image" src="" alt="">
+      </div>
+      <div class="detail-copy">
+        <p class="eyebrow" id="detail-style"></p>
+        <h2 id="detail-title"></h2>
+        <ul class="detail-meta" id="detail-meta"></ul>
+        <p id="detail-description"></p>
+        <div class="detail-actions">
+          <button class="btn btn-primary" id="detail-use-inspiration">Use This as Inspiration</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/placeholder-images.js"></script>
+<script src="js/portfolio-data.js"></script>
+<script src="js/inspiration-data.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/ideas-cart.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/portfolio.js"></script>
+</body>
+</html>

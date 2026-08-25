@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Velvet Vessel Ink</title>
+<meta name="description" content="Get in touch with Megan Klein at Velvet Vessel Ink in St. George, Utah. Send a message or reach out on Instagram and TikTok.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/contact.css">
+</head>
+<body data-page="contact" data-solid-header="true">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header"></header>
+
+<main id="main">
+  <section class="page-hero page-hero--sm">
+    <div class="container">
+      <p class="eyebrow">Get in Touch</p>
+      <h1>Contact</h1>
+      <p class="lead">For general questions, use the form below. For tattoo requests, head to the <a href="booking.html">booking page</a> so nothing gets missed.</p>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container contact-layout">
+
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="field">
+          <label for="c-name">Name</label>
+          <input type="text" id="c-name" required autocomplete="name">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="c-phone">Phone <span class="hint">(optional)</span></label>
+            <input type="tel" id="c-phone" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="c-message">Message</label>
+          <textarea id="c-message" required placeholder="How can Megan help?"></textarea>
+        </div>
+        <div class="form-status" id="contact-status" role="alert"></div>
+        <button type="submit" class="btn btn-primary btn-block" id="contact-submit">Send Message</button>
+        <p class="deposit-note">Prefer email? This form also opens a message to <span id="contact-email-inline"></span> directly.</p>
+      </form>
+
+      <aside class="contact-info">
+        <div class="contact-info-block">
+          <p class="footer-heading">Studio Location</p>
+          <p id="contact-location"></p>
+        </div>
+        <div class="contact-info-block">
+          <p class="footer-heading">Email</p>
+          <a id="contact-email-link" href="#"></a>
+        </div>
+        <div class="contact-info-block">
+          <p class="footer-heading">Follow</p>
+          <a id="contact-instagram-link" href="#" target="_blank" rel="noopener">Instagram</a>
+          <a id="contact-tiktok-link" href="#" target="_blank" rel="noopener">TikTok</a>
+        </div>
+        <div class="contact-info-media">
+          <img id="contact-image" src="" alt="Velvet Vessel Ink studio detail">
+        </div>
+      </aside>
+
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/placeholder-images.js"></script>
+<script src="js/portfolio-data.js"></script>
+<script src="js/inspiration-data.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

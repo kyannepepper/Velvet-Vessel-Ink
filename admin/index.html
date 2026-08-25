@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Login — Velvet Vessel Ink</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-login-body" data-page="admin">
+<main class="admin-login-wrap">
+  <div class="admin-login-card">
+    <a class="brand admin-login-brand" href="../index.html">
+      <span class="brand-mark">Velvet Vessel Ink</span>
+      <span class="brand-sub">Studio Dashboard</span>
+    </a>
+
+    <form id="admin-login-form" novalidate>
+      <div class="field">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" required autocomplete="current-password">
+      </div>
+      <div class="form-status" id="login-status" role="alert"></div>
+      <button type="submit" class="btn btn-primary btn-block" id="login-submit">Sign In</button>
+    </form>
+
+    <p class="admin-login-back"><a href="../index.html">&larr; Back to site</a></p>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/admin/admin-auth.js"></script>
+</body>
+</html>

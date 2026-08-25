@@ -1,0 +1,42 @@
+/* =========================================================================
+   Shared styles for long-form info pages (Aftercare, FAQ)
+   ========================================================================= */
+
+.priority-note {
+  background: var(--c-cream);
+  border-top: var(--border-hairline);
+  border-bottom: var(--border-hairline);
+  padding-block: var(--space-md);
+}
+.priority-note p { font-size: var(--fs-small); max-width: none; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+.info-toc { position: sticky; top: 7.5rem; }
+.info-toc ul { display: flex; flex-direction: column; gap: 0.6rem; margin-top: var(--space-sm); }
+.info-toc a { font-size: var(--fs-small); color: var(--text-muted); }
+.info-toc a:hover { color: var(--text-primary); }
+
+.info-article { padding-block: var(--space-lg); border-top: var(--border-hairline); scroll-margin-top: 7rem; }
+.info-article:first-child { border-top: none; }
+.info-num { display: block; font-family: var(--font-serif); color: var(--c-taupe); font-size: 1.6rem; margin-bottom: var(--space-2xs); }
+.info-article h2 { margin-bottom: var(--space-sm); }
+.info-article p { margin-bottom: var(--space-sm); }
+
+.info-cta {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: var(--border-hairline);
+  text-align: center;
+}
+.info-cta p { margin-inline: auto; margin-bottom: var(--space-md); font-family: var(--font-serif); font-size: 1.4rem; }
+
+@media (max-width: 860px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .info-toc { position: static; border-bottom: var(--border-hairline); padding-bottom: var(--space-md); margin-bottom: var(--space-md); }
+  .info-toc ul { flex-direction: row; flex-wrap: wrap; gap: 0.8rem 1.2rem; }
+}

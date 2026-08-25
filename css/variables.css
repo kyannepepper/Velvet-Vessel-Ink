@@ -1,0 +1,82 @@
+/* =========================================================================
+   VELVET VESSEL INK — Design Tokens
+   A luxury editorial tattoo portfolio design system.
+   ========================================================================= */
+
+:root {
+  /* ---------- Color palette ---------- */
+  --c-black: #0c0b0a;
+  --c-charcoal: #211f1c;
+  --c-charcoal-soft: #2e2b27;
+  --c-warm-gray: #857c70;
+  --c-warm-gray-light: #a89e91;
+  --c-taupe: #b6a793;
+  --c-beige: #d9cdba;
+  --c-cream: #f4efe6;
+  --c-offwhite: #faf7f1;
+  --c-white: #fffdfa;
+
+  --c-line: rgba(12, 11, 10, 0.1);
+  --c-line-light: rgba(250, 247, 241, 0.16);
+
+  /* Semantic */
+  --bg-primary: var(--c-offwhite);
+  --bg-inverse: var(--c-black);
+  --text-primary: var(--c-black);
+  --text-inverse: var(--c-offwhite);
+  --text-muted: var(--c-warm-gray);
+  --accent: var(--c-taupe);
+
+  --status-available: #6f8f6a;
+  --status-unavailable: #a3564f;
+  --status-requested: #b6934a;
+
+  /* ---------- Typography ---------- */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-display: clamp(3rem, 8vw, 7.5rem);
+  --fs-h1: clamp(2.5rem, 5vw, 4.5rem);
+  --fs-h2: clamp(2rem, 4vw, 3.25rem);
+  --fs-h3: clamp(1.5rem, 2.6vw, 2.1rem);
+  --fs-h4: 1.35rem;
+  --fs-lead: clamp(1.1rem, 1.6vw, 1.4rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-tiny: 0.7rem;
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.25;
+  --lh-body: 1.7;
+
+  --ls-eyebrow: 0.28em;
+  --ls-wide: 0.08em;
+
+  /* ---------- Spacing scale ---------- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1.25rem;
+  --space-md: 2rem;
+  --space-lg: 3.25rem;
+  --space-xl: 5rem;
+  --space-2xl: 7.5rem;
+  --space-3xl: 10rem;
+
+  --container-max: 1400px;
+  --container-narrow: 780px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+
+  /* ---------- Motion ---------- */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.35s;
+  --dur-med: 0.7s;
+  --dur-slow: 1.1s;
+
+  /* ---------- Elevation ---------- */
+  --shadow-soft: 0 20px 60px -30px rgba(12, 11, 10, 0.35);
+  --shadow-strong: 0 30px 80px -20px rgba(12, 11, 10, 0.45);
+
+  --radius-none: 0;
+  --border-hairline: 1px solid var(--c-line);
+}

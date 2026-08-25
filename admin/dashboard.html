@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Dashboard — Velvet Vessel Ink</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body" data-page="admin">
+
+<div class="admin-shell">
+
+  <aside class="admin-sidebar">
+    <a class="brand admin-brand" href="../index.html">
+      <span class="brand-mark">Velvet Vessel Ink</span>
+      <span class="brand-sub">Studio Dashboard</span>
+    </a>
+    <nav class="admin-nav" aria-label="Dashboard sections">
+      <button class="admin-nav-item is-active" data-panel="calendar" type="button">Calendar</button>
+      <button class="admin-nav-item" data-panel="requests" type="button">Tattoo Requests <span class="admin-badge" id="badge-requests" hidden></span></button>
+      <button class="admin-nav-item" data-panel="portfolio" type="button">Portfolio</button>
+      <button class="admin-nav-item" data-panel="designs" type="button">Design Gallery</button>
+      <button class="admin-nav-item" data-panel="messages" type="button">Messages <span class="admin-badge" id="badge-messages" hidden></span></button>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <a href="../index.html" target="_blank" class="admin-view-site">View Live Site &rarr;</a>
+      <button class="btn-ghost" id="admin-signout" type="button">Sign Out</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- CALENDAR PANEL -->
+    <section class="admin-panel is-active" id="panel-calendar">
+      <div class="admin-panel-head">
+        <div><p class="eyebrow">Studio Calendar</p><h1>Availability</h1></div>
+      </div>
+      <p class="admin-panel-sub">Click a date to mark it available or unavailable. Dates with pending or approved requests are shown automatically.</p>
+      <div class="calendar-legend">
+        <span><i class="legend-dot legend-dot--available"></i>Available</span>
+        <span><i class="legend-dot legend-dot--unavailable"></i>Unavailable</span>
+        <span><i class="legend-dot legend-dot--requested"></i>Requested</span>
+        <span><i class="legend-dot" style="background:#8a662c"></i>Booked</span>
+      </div>
+      <div class="calendar-widget admin-calendar" id="admin-calendar"></div>
+    </section>
+
+    <!-- REQUESTS PANEL -->
+    <section class="admin-panel" id="panel-requests">
+      <div class="admin-panel-head">
+        <div><p class="eyebrow">Client Submissions</p><h1>Tattoo Requests</h1></div>
+      </div>
+      <div class="admin-filter-chips" id="request-status-filters"></div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="requests-table">
+          <thead>
+            <tr><th>Client</th><th>Idea</th><th>Style</th><th>Date Requested</th><th>Estimate</th><th>Status</th></tr>
+          </thead>
+          <tbody id="requests-tbody">
+            <tr><td colspan="6"><div class="loading-state"><div class="spinner"></div>Loading requests&hellip;</div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO PANEL -->
+    <section class="admin-panel" id="panel-portfolio">
+      <div class="admin-panel-head">
+        <div><p class="eyebrow">Completed Work</p><h1>Portfolio</h1></div>
+        <button class="btn btn-primary" id="add-portfolio-btn" type="button">+ Add Tattoo</button>
+      </div>
+      <div class="admin-card-grid" id="portfolio-admin-grid">
+        <div class="loading-state"><div class="spinner"></div>Loading portfolio&hellip;</div>
+      </div>
+    </section>
+
+    <!-- DESIGN GALLERY PANEL -->
+    <section class="admin-panel" id="panel-designs">
+      <div class="admin-panel-head">
+        <div><p class="eyebrow">Client Inspiration</p><h1>Design Gallery</h1></div>
+        <button class="btn btn-primary" id="add-design-btn" type="button">+ Add Design</button>
+      </div>
+      <div class="admin-card-grid" id="designs-admin-grid">
+        <div class="loading-state"><div class="spinner"></div>Loading designs&hellip;</div>
+      </div>
+    </section>
+
+    <!-- MESSAGES PANEL -->
+    <section class="admin-panel" id="panel-messages">
+      <div class="admin-panel-head">
+        <div><p class="eyebrow">Contact Form</p><h1>Messages</h1></div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="messages-table">
+          <thead><tr><th>Name</th><th>Message</th><th>Date</th><th>Status</th><th></th></tr></thead>
+          <tbody id="messages-tbody">
+            <tr><td colspan="5"><div class="loading-state"><div class="spinner"></div>Loading messages&hellip;</div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Request detail modal -->
+<div class="overlay" id="request-overlay">
+  <div class="modal admin-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <div id="request-detail-content"></div>
+  </div>
+</div>
+
+<!-- Portfolio item form modal -->
+<div class="overlay" id="portfolio-form-overlay">
+  <div class="modal admin-modal admin-form-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h2 id="portfolio-form-title">Add Tattoo</h2>
+    <form id="portfolio-form">
+      <input type="hidden" id="pf-id">
+      <div class="field">
+        <label for="pf-title">Title</label>
+        <input type="text" id="pf-title" required>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="pf-style">Style</label><select id="pf-style" required></select></div>
+        <div class="field"><label for="pf-placement">Placement</label><select id="pf-placement" required></select></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="pf-size">Size</label>
+          <select id="pf-size" required><option value="Small">Small</option><option value="Medium">Medium</option><option value="Large">Large</option></select>
+        </div>
+        <div class="field"><label for="pf-price">Price ($)</label><input type="number" id="pf-price" min="0" required></div>
+      </div>
+      <div class="field">
+        <label for="pf-description">Description</label>
+        <textarea id="pf-description" required></textarea>
+      </div>
+      <div class="field">
+        <label for="pf-image">Image <span class="hint">(uploads to Supabase Storage)</span></label>
+        <input type="file" id="pf-image" accept="image/*">
+        <input type="hidden" id="pf-image-url">
+        <div class="image-preview" id="pf-image-preview"></div>
+      </div>
+      <div class="field field-inline">
+        <label><input type="checkbox" id="pf-featured"> Featured on homepage</label>
+      </div>
+      <div class="form-status" id="portfolio-form-status" role="alert"></div>
+      <div class="admin-form-actions">
+        <button type="button" class="btn-ghost" id="pf-delete" hidden>Delete</button>
+        <button type="submit" class="btn btn-primary" id="pf-submit">Save Tattoo</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Design item form modal -->
+<div class="overlay" id="design-form-overlay">
+  <div class="modal admin-modal admin-form-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h2 id="design-form-title">Add Design</h2>
+    <form id="design-form">
+      <input type="hidden" id="df-id">
+      <div class="field">
+        <label for="df-name">Name</label>
+        <input type="text" id="df-name" required>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="df-category">Category</label><select id="df-category" required></select></div>
+        <div class="field"><label for="df-style">Style</label><select id="df-style" required></select></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="df-placement">Suggested Placement</label><input type="text" id="df-placement" required></div>
+        <div class="field"><label for="df-size">Suggested Size</label>
+          <select id="df-size" required><option value="Small">Small</option><option value="Medium">Medium</option><option value="Large">Large</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="df-price-min">Estimated Price Min ($)</label><input type="number" id="df-price-min" min="0" required></div>
+        <div class="field"><label for="df-price-max">Estimated Price Max ($)</label><input type="number" id="df-price-max" min="0" required></div>
+      </div>
+      <div class="field">
+        <label for="df-description">Description</label>
+        <textarea id="df-description" required></textarea>
+      </div>
+      <div class="field">
+        <label for="df-image">Image <span class="hint">(uploads to Supabase Storage)</span></label>
+        <input type="file" id="df-image" accept="image/*">
+        <input type="hidden" id="df-image-url">
+        <div class="image-preview" id="df-image-preview"></div>
+      </div>
+      <div class="form-status" id="design-form-status" role="alert"></div>
+      <div class="admin-form-actions">
+        <button type="button" class="btn-ghost" id="df-delete" hidden>Delete</button>
+        <button type="submit" class="btn btn-primary" id="df-submit">Save Design</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Day availability popover -->
+<div class="overlay" id="day-overlay">
+  <div class="modal admin-modal admin-day-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <div id="day-modal-content"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/placeholder-images.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/calendar-widget.js"></script>
+<script src="../js/admin/admin-auth.js"></script>
+<script src="../js/admin/admin-app.js"></script>
+<script src="../js/admin/admin-calendar.js"></script>
+<script src="../js/admin/admin-requests.js"></script>
+<script src="../js/admin/admin-portfolio.js"></script>
+<script src="../js/admin/admin-designs.js"></script>
+<script src="../js/admin/admin-messages.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspiration Gallery — Velvet Vessel Ink</title>
+<meta name="description" content="Browse curated tattoo design concepts at Velvet Vessel Ink — florals, botanicals, snakes, celestial motifs, script, and minimalist designs. Save your favorites and combine them into a custom request.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/inspiration.css">
+</head>
+<body data-page="inspiration" data-solid-header="true">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header"></header>
+
+<main id="main">
+  <section class="page-hero page-hero--sm">
+    <div class="container">
+      <p class="eyebrow">Design Gallery</p>
+      <h1>Inspiration</h1>
+      <p class="lead">Not sure exactly what you want yet? Browse design concepts below, save your favorites, and combine a few into one custom idea &mdash; or skip this entirely and submit your own concept on the request form.</p>
+      <a href="booking.html" class="btn-ghost">Submit Your Own Idea Instead &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section section--tight inspiration-section">
+    <div class="container">
+
+      <div class="filter-bar" role="search" aria-label="Filter inspiration gallery">
+        <div class="field search-field">
+          <label for="insp-search">Search</label>
+          <input type="text" id="insp-search" placeholder="Search designs&hellip;">
+        </div>
+        <div class="chip-group" id="category-chips" aria-label="Filter by category"></div>
+      </div>
+
+      <p class="results-count" id="insp-results-count" aria-live="polite"></p>
+
+      <div class="inspiration-grid" id="inspiration-grid">
+        <div class="loading-state"><div class="spinner"></div>Loading designs&hellip;</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<!-- Sticky "My Ideas" bar -->
+<div class="ideas-bar" id="ideas-bar">
+  <div class="container ideas-bar-inner">
+    <span class="ideas-bar-text">
+      <strong id="ideas-count">0</strong> design<span id="ideas-plural">s</span> saved to My Ideas
+    </span>
+    <div class="ideas-bar-actions">
+      <button class="btn-ghost" id="ideas-clear" type="button">Clear</button>
+      <a class="btn btn-primary" id="ideas-continue" href="booking.html?source=ideas">Continue With These &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- Detail modal -->
+<div class="overlay" id="insp-overlay">
+  <div class="modal detail-modal" role="dialog" aria-modal="true" aria-labelledby="insp-detail-title">
+    <button class="modal-close" id="insp-modal-close" aria-label="Close">&times;</button>
+    <div class="detail-grid">
+      <div class="detail-media">
+        <img id="insp-detail-image" src="" alt="">
+      </div>
+      <div class="detail-copy">
+        <p class="eyebrow" id="insp-detail-category"></p>
+        <h2 id="insp-detail-title"></h2>
+        <ul class="detail-meta" id="insp-detail-meta"></ul>
+        <p id="insp-detail-description"></p>
+        <div class="detail-actions">
+          <button class="btn btn-outline-dark" id="insp-detail-save">Save to My Ideas</button>
+          <button class="btn btn-primary" id="insp-detail-use">Use This Design</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/placeholder-images.js"></script>
+<script src="js/portfolio-data.js"></script>
+<script src="js/inspiration-data.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/ideas-cart.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/inspiration.js"></script>
+</body>
+</html>

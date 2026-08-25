@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Now — Request a Tattoo | Velvet Vessel Ink</title>
+<meta name="description" content="Request a tattoo appointment with Megan Klein at Velvet Vessel Ink in St. George, Utah. Choose an available date, share your idea, and get an instant price estimate. No deposit required — Megan personally reviews every request.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/booking.css">
+</head>
+<body data-page="booking" data-solid-header="true">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header"></header>
+
+<main id="main">
+  <section class="page-hero page-hero--sm">
+    <div class="container">
+      <p class="eyebrow">Book Now</p>
+      <h1>Request a Tattoo</h1>
+      <p class="lead">Choose an available date and tell us about your idea. Megan personally reviews every request &mdash; nothing is booked automatically, and no deposit is required to submit.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight booking-section">
+    <div class="container booking-layout">
+
+      <form id="booking-form" class="booking-form" novalidate>
+
+        <!-- SELECTED INSPIRATION -->
+        <div class="form-block" id="inspiration-block" hidden>
+          <h2 class="form-block-title">Your Selected Inspiration</h2>
+          <p class="form-block-sub">These will be attached to your request. Remove anything you'd rather leave out.</p>
+          <div class="selected-chips" id="selected-designs-list"></div>
+          <a href="inspiration.html" class="btn-ghost">Browse More Designs &rarr;</a>
+        </div>
+
+        <!-- CALENDAR -->
+        <div class="form-block">
+          <h2 class="form-block-title">1. Choose an Available Date</h2>
+          <p class="form-block-sub">Only open dates can be selected. Megan will confirm your exact date upon approval.</p>
+          <div class="calendar-legend">
+            <span><i class="legend-dot legend-dot--available"></i>Available</span>
+            <span><i class="legend-dot legend-dot--unavailable"></i>Unavailable</span>
+            <span><i class="legend-dot legend-dot--requested"></i>Requested / Booked</span>
+          </div>
+          <div class="calendar-widget" id="booking-calendar"></div>
+          <p class="selected-date-display" id="selected-date-display">No date selected yet</p>
+          <input type="hidden" id="preferred-date" name="preferred-date" required>
+        </div>
+
+        <!-- YOUR IDEA -->
+        <div class="form-block">
+          <h2 class="form-block-title">2. Your Tattoo Idea</h2>
+          <div class="field">
+            <label for="f-idea">Describe your tattoo idea</label>
+            <textarea id="f-idea" required placeholder="Tell us about the concept, meaning, references, or inspiration behind your piece&hellip;"></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-style">Style</label>
+              <select id="f-style" required></select>
+            </div>
+            <div class="field">
+              <label for="f-placement">Placement</label>
+              <select id="f-placement" required></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Size</label>
+            <div class="chip-group" id="size-chips"></div>
+          </div>
+          <div class="field">
+            <label>Black &amp; Gray or Color</label>
+            <div class="chip-group" id="color-chips">
+              <button type="button" class="chip is-active" data-color="black_gray">Black &amp; Gray</button>
+              <button type="button" class="chip" data-color="color">Color</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-notes">Additional thoughts <span class="hint">(optional)</span></label>
+            <textarea id="f-notes" placeholder="Anything else Megan should know — timing, budget flexibility, prior tattoo experience, etc."></textarea>
+          </div>
+          <div class="field">
+            <label for="f-files">Reference images <span class="hint">(optional, multiple allowed)</span></label>
+            <input type="file" id="f-files" accept="image/*" multiple>
+            <div class="file-preview-grid" id="file-preview-grid"></div>
+          </div>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="form-block">
+          <h2 class="form-block-title">3. Your Contact Information</h2>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-name">Full name</label>
+              <input type="text" id="f-name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input type="email" id="f-email" required autocomplete="email">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone</label>
+            <input type="tel" id="f-phone" required autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="form-status" id="booking-status" role="alert"></div>
+
+        <button type="submit" class="btn btn-primary btn-block booking-submit" id="booking-submit">Submit Request</button>
+        <p class="deposit-note">Estimated pricing only. Final pricing will be determined by Megan after reviewing your tattoo request. No deposit is required to submit a request.</p>
+      </form>
+
+      <!-- SUMMARY / PRICE SIDEBAR -->
+      <aside class="booking-summary" aria-label="Request summary">
+        <div class="summary-card">
+          <p class="eyebrow">Estimated Price</p>
+          <p class="summary-price" id="summary-price">$100&ndash;$200</p>
+          <p class="summary-hint">Based on size <span id="summary-size">Small</span> &middot; <span id="summary-color">Black &amp; Gray</span></p>
+          <hr class="hr">
+          <dl class="summary-list">
+            <div><dt>Date</dt><dd id="summary-date">Not selected</dd></div>
+            <div><dt>Style</dt><dd id="summary-style">&mdash;</dd></div>
+            <div><dt>Placement</dt><dd id="summary-placement">&mdash;</dd></div>
+            <div><dt>Designs Attached</dt><dd id="summary-designs">0</dd></div>
+          </dl>
+          <p class="summary-note">Estimated pricing only. Final pricing will be determined by Megan after reviewing your tattoo request.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- CONFIRMATION STATE -->
+  <section class="section confirmation-section" id="confirmation-section" hidden>
+    <div class="container container--narrow">
+      <p class="eyebrow">Request Received</p>
+      <h2>Thank You &mdash; Your Request Has Been Sent</h2>
+      <p class="lead">Megan reviews every request personally. You'll hear back by email once she's had a chance to review your idea and confirm your date.</p>
+      <a href="index.html" class="btn btn-primary">Back to Home</a>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/placeholder-images.js"></script>
+<script src="js/portfolio-data.js"></script>
+<script src="js/inspiration-data.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/ideas-cart.js"></script>
+<script src="js/pricing-calculator.js"></script>
+<script src="js/calendar-widget.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>

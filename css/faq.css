@@ -1,0 +1,39 @@
+/* =========================================================================
+   FAQ page — accordion
+   ========================================================================= */
+
+.faq-group { margin-bottom: var(--space-xl); }
+.faq-group-title {
+  font-size: var(--fs-h4);
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  border-bottom: var(--border-hairline);
+}
+
+.faq-item {
+  border-bottom: var(--border-hairline);
+}
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding-block: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  font-weight: 300;
+  flex-shrink: 0;
+  transition: transform var(--dur-fast) var(--ease-editorial);
+}
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-answer { padding-bottom: var(--space-md); }
+.faq-answer p { color: var(--text-muted); }
+.faq-answer a { text-decoration: underline; color: var(--text-primary); }
