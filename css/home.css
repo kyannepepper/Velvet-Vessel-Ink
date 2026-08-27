@@ -34,31 +34,20 @@
   padding-bottom: var(--space-2xl);
   padding-top: 9rem;
 }
-.hero .eyebrow {
-  color: rgba(250,247,241,0.8);
-  text-shadow: 0 1px 8px rgba(12,11,10,0.5);
-}
-.hero-kicker {
-  font-size: var(--fs-small);
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(250,247,241,0.8);
-  margin-bottom: var(--space-md);
-}
 .hero-headline {
-  font-size: var(--fs-display);
-  max-width: 16ch;
+  font-size: clamp(2.75rem, 5.5vw, 5rem);
+  font-weight: 600;
+  max-width: 32ch;
   margin-bottom: var(--space-md);
   text-shadow: 0 2px 20px rgba(12,11,10,0.55), 0 1px 4px rgba(12,11,10,0.6);
 }
-.hero-specialties {
-  font-family: var(--font-sans);
-  font-size: var(--fs-small);
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--c-beige);
+.hero-lead {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+  max-width: 42ch;
+  color: var(--c-offwhite);
   text-shadow: 0 1px 8px rgba(12,11,10,0.6);
   margin-bottom: var(--space-lg);
 }
