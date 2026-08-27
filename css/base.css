@@ -91,7 +91,8 @@ p.lead { font-size: var(--fs-lead); font-weight: 300; color: var(--text-primary)
   display: inline-block;
   font-family: var(--font-sans);
   font-size: var(--fs-tiny);
-  letter-spacing: var(--ls-eyebrow);
+  font-weight: 500;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: var(--space-sm);
@@ -105,6 +106,9 @@ p.lead { font-size: var(--fs-lead); font-weight: 300; color: var(--text-primary)
 .section-head--center {
   margin-inline: auto;
   text-align: center;
+}
+.section-head--center p {
+  margin-inline: auto;
 }
 
 .hr {
@@ -144,7 +148,8 @@ p.lead { font-size: var(--fs-lead); font-weight: 300; color: var(--text-primary)
   padding: 0.95em 2.1em;
   font-family: var(--font-sans);
   font-size: var(--fs-small);
-  letter-spacing: var(--ls-wide);
+  font-weight: 500;
+  letter-spacing: 3px;
   text-transform: uppercase;
   border: 1px solid currentColor;
   background: transparent;
@@ -252,7 +257,8 @@ p.lead { font-size: var(--fs-lead); font-weight: 300; color: var(--text-primary)
 }
 .brand-sub {
   font-size: 0.6rem;
-  letter-spacing: 0.2em;
+  font-weight: 500;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--c-taupe);
   margin-top: 0.35rem;
@@ -291,7 +297,8 @@ p.lead { font-size: var(--fs-lead); font-weight: 300; color: var(--text-primary)
   align-items: center;
   gap: var(--space-md);
   font-size: var(--fs-small);
-  letter-spacing: var(--ls-wide);
+  font-weight: 500;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 .nav-links a {

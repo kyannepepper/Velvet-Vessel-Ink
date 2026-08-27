@@ -35,8 +35,8 @@ const SITE_CONFIG = {
     email: 'hello@velvetvesselink.com',
     phone: '(435) 555-0142',
     addressLine: 'St. George, Utah · exact studio address shared upon booking',
-    instagram: 'https://instagram.com/velvetvesselink',
-    tiktok: 'https://tiktok.com/@velvetvesselink',
+    instagram: 'https://www.instagram.com/velvetvessel_ink/',
+    tiktok: 'https://www.tiktok.com/@velvetvessel.ink',
   },
 
   // ---------------------------------------------------------------------

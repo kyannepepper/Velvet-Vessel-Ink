@@ -44,6 +44,13 @@ const PLACEHOLDER_IMAGES = {
     unsplash('1594070182331-51452dcd61c3'),
   ],
 
+  // Size examples for the pricing preview (small / medium / large)
+  sizeExamples: {
+    small: unsplash('1568515045052-f9a854d70bfd'),
+    medium: unsplash('1552627019-947c3789ffb5'),
+    large: unsplash('1586243287039-23f4c8e2e7ab'),
+  },
+
   // Completed tattoo work (Portfolio)
   portfolio: [
     unsplash('1568515045052-f9a854d70bfd'),
