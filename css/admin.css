@@ -79,6 +79,9 @@
 .admin-panel-head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-md); margin-bottom: var(--space-sm); flex-wrap: wrap; }
 .admin-panel-sub { color: var(--text-muted); font-size: var(--fs-small); margin-bottom: var(--space-md); max-width: 60ch; }
 
+.admin-calendar { max-width: 560px; }
+.admin-calendar .cal-cell { font-size: var(--fs-body); }
+
 @media (max-width: 900px) {
   .admin-shell { grid-template-columns: 1fr; }
   .admin-sidebar { position: static; height: auto; flex-direction: row; align-items: center; flex-wrap: wrap; gap: var(--space-md); }

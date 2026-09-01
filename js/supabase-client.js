@@ -44,6 +44,19 @@ const VVI_DATA = (function () {
     );
   }
 
+  // Fires the notify-email Edge Function so Megan gets an email for new
+  // messages/requests. Best-effort: the database row (already saved) is
+  // always the source of truth, so a failure here is only logged, never
+  // thrown back to the visitor.
+  async function notifyStudio(type, record) {
+    if (!configured) return;
+    try {
+      await client.functions.invoke('notify-email', { body: { type, record } });
+    } catch (err) {
+      console.warn('notify-email call failed (message/request was still saved):', err);
+    }
+  }
+
   // -----------------------------------------------------------------
   // PORTFOLIO (completed tattoos)
   // -----------------------------------------------------------------
@@ -227,6 +240,7 @@ const VVI_DATA = (function () {
       }
     }
 
+    notifyStudio('tattoo_request', request);
     return request;
   }
 
@@ -266,6 +280,7 @@ const VVI_DATA = (function () {
       .select()
       .single();
     if (error) throw error;
+    notifyStudio('contact_message', data);
     return data;
   }
 

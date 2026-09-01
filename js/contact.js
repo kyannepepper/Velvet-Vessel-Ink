@@ -1,7 +1,8 @@
 /**
  * contact.js — populates business info and handles the contact form:
- * saves the message to Supabase (when connected) and opens a pre-filled
- * mailto link as an immediate fallback/companion, per spec.
+ * saves the message to Supabase, which also triggers an email notification
+ * to the studio (see supabase-client.js -> notifyStudio). Shows an on-page
+ * success message; never redirects to the visitor's own email app.
  */
 (function () {
   const { $, setFormStatus, clearFormStatus } = window.VVI;
@@ -24,21 +25,6 @@
     if (img) img.src = window.PLACEHOLDER_IMAGES?.studio?.[0] || '';
   }
 
-  function buildMailto({ name, email, phone, message }) {
-    const cfg = window.SITE_CONFIG?.BUSINESS || {};
-    const subject = encodeURIComponent(`New message from ${name} via velvetvesselink.com`);
-    const bodyLines = [
-      message,
-      '',
-      '---',
-      `Name: ${name}`,
-      `Email: ${email}`,
-      phone ? `Phone: ${phone}` : null,
-    ].filter(Boolean);
-    const body = encodeURIComponent(bodyLines.join('\n'));
-    return `mailto:${cfg.email || ''}?subject=${subject}&body=${body}`;
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
     const statusEl = $('#contact-status');
@@ -54,32 +40,34 @@
       return;
     }
 
+    if (!window.VVI_DATA.isConfigured()) {
+      setFormStatus(
+        statusEl,
+        `This form isn't connected yet. Please email ${window.SITE_CONFIG?.BUSINESS?.email || 'us'} directly.`,
+        'error'
+      );
+      return;
+    }
+
     const submitBtn = $('#contact-submit');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
-    let savedToDatabase = false;
     try {
-      if (window.VVI_DATA.isConfigured()) {
-        await window.VVI_DATA.submitContactMessage({ name, email, phone, message });
-        savedToDatabase = true;
-      }
+      await window.VVI_DATA.submitContactMessage({ name, email, phone, message });
+      setFormStatus(statusEl, "We've received your message and will get back to you soon!", 'success');
+      $('#contact-form').reset();
     } catch (err) {
       console.error('Could not save message to Supabase:', err);
+      setFormStatus(
+        statusEl,
+        `Something went wrong sending your message. Please email ${window.SITE_CONFIG?.BUSINESS?.email || 'us'} directly.`,
+        'error'
+      );
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
     }
-
-    window.location.href = buildMailto({ name, email, phone, message });
-
-    setFormStatus(
-      statusEl,
-      savedToDatabase
-        ? "Message saved and your email app should now be open to send it along — thank you!"
-        : "Your email app should now be open to send your message — thank you!",
-      'success'
-    );
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Send Message';
-    $('#contact-form').reset();
   }
 
   document.addEventListener('DOMContentLoaded', () => {

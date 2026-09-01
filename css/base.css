@@ -350,6 +350,33 @@ p.lead { font-size: var(--fs-lead); font-weight: 300; color: var(--text-primary)
   .nav-book-btn { margin-left: 0; margin-top: var(--space-sm); }
 }
 
+/* ---------- Floating call button ---------- */
+.floating-call-btn {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  z-index: 95;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--c-black);
+  color: var(--c-offwhite);
+  box-shadow: var(--shadow-strong);
+  transition: transform var(--dur-fast) var(--ease-editorial), background var(--dur-fast);
+}
+.floating-call-btn svg { width: 24px; height: 24px; }
+.floating-call-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: var(--c-charcoal);
+}
+@media (max-width: 560px) {
+  .floating-call-btn { right: var(--space-sm); bottom: var(--space-sm); width: 50px; height: 50px; }
+  .floating-call-btn svg { width: 22px; height: 22px; }
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--c-black);

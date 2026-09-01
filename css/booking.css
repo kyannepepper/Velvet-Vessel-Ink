@@ -106,7 +106,7 @@ input[type="file"] {
   border: none; font-size: 0.8rem; line-height: 1;
 }
 
-.deposit-note { text-align: center; font-size: var(--fs-tiny); color: var(--text-muted); margin-top: var(--space-md); font-style: italic; }
+.deposit-note { text-align: center; font-size: var(--fs-tiny); color: var(--text-muted); margin-top: var(--space-md); font-style: italic; margin-inline: auto; }
 
 /* Summary sidebar */
 .booking-summary { position: sticky; top: 7.5rem; }
