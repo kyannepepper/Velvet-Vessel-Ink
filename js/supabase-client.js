@@ -161,13 +161,15 @@ const VVI_DATA = (function () {
 
   async function fetchRequestedDates(startISO, endISO) {
     // Dates with an active (non-declined) request, used to shade the calendar.
+    // Reads from requested_dates_public, a narrow view (just date + status,
+    // no client info) that anonymous visitors are allowed to read -- the
+    // tattoo_requests table itself only grants SELECT to admins.
     if (!configured) return [];
     const { data, error } = await client
-      .from('tattoo_requests')
+      .from('requested_dates_public')
       .select('preferred_date, status')
       .gte('preferred_date', startISO)
-      .lte('preferred_date', endISO)
-      .neq('status', 'declined');
+      .lte('preferred_date', endISO);
     if (error) throw error;
     return data;
   }
@@ -189,26 +191,32 @@ const VVI_DATA = (function () {
   async function submitTattooRequest(payload, selectedDesignIds = [], files = []) {
     if (!configured) throw notConfiguredError();
 
-    const { data: request, error } = await client
-      .from('tattoo_requests')
-      .insert({
-        client_name: payload.name,
-        client_email: payload.email,
-        client_phone: payload.phone,
-        tattoo_idea: payload.idea,
-        style: payload.style,
-        placement: payload.placement,
-        size: payload.size,
-        color_preference: payload.colorPreference,
-        additional_notes: payload.notes,
-        preferred_date: payload.preferredDate,
-        estimated_price_min: payload.estimateMin,
-        estimated_price_max: payload.estimateMax,
-        source_portfolio_item_id: payload.sourcePortfolioItemId || null,
-        status: 'new',
-      })
-      .select()
-      .single();
+    // We generate the id client-side and insert WITHOUT .select() here.
+    // tattoo_requests only grants SELECT to admins (anyone can INSERT, only
+    // admins can read). insert().select() asks Postgres to hand the new row
+    // back (RETURNING), and Postgres enforces the SELECT policy on that
+    // returned row too -- so for an anonymous visitor it fails with
+    // "new row violates row-level security policy", even though the insert
+    // itself is perfectly allowed. Skipping .select() avoids that check.
+    const request = {
+      id: crypto.randomUUID(),
+      client_name: payload.name,
+      client_email: payload.email,
+      client_phone: payload.phone,
+      tattoo_idea: payload.idea,
+      style: payload.style,
+      placement: payload.placement,
+      size: payload.size,
+      color_preference: payload.colorPreference,
+      additional_notes: payload.notes,
+      preferred_date: payload.preferredDate,
+      estimated_price_min: payload.estimateMin,
+      estimated_price_max: payload.estimateMax,
+      source_portfolio_item_id: payload.sourcePortfolioItemId || null,
+      status: 'new',
+    };
+
+    const { error } = await client.from('tattoo_requests').insert(request);
     if (error) throw error;
 
     if (selectedDesignIds.length) {
@@ -268,17 +276,18 @@ const VVI_DATA = (function () {
   // -----------------------------------------------------------------
   async function submitContactMessage(payload) {
     if (!configured) throw notConfiguredError();
-    const { data, error } = await client
-      .from('contact_messages')
-      .insert({
-        name: payload.name,
-        email: payload.email,
-        phone: payload.phone,
-        message: payload.message,
-        status: 'unread',
-      })
-      .select()
-      .single();
+    // Same reasoning as submitTattooRequest: contact_messages only grants
+    // SELECT to admins, so we generate the id client-side and skip
+    // .select() on the insert to avoid the RLS/RETURNING conflict.
+    const data = {
+      id: crypto.randomUUID(),
+      name: payload.name,
+      email: payload.email,
+      phone: payload.phone,
+      message: payload.message,
+      status: 'unread',
+    };
+    const { error } = await client.from('contact_messages').insert(data);
     if (error) throw error;
     notifyStudio('contact_message', data);
     return data;
