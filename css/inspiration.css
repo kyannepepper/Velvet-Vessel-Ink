@@ -63,7 +63,7 @@
 .design-card-meta { font-size: var(--fs-tiny); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
 .design-card-price { font-size: var(--fs-small); margin-top: 0.2rem; }
 .design-card-actions { display: flex; gap: 0.5rem; margin-top: auto; padding-top: var(--space-sm); }
-.design-card-actions .btn { flex: 1; padding-inline: 0.5em; font-size: 0.68rem; }
+.design-card-actions .btn { flex: 1; padding-inline: 0.5em; font-size: 0.68rem; letter-spacing: 1.5px; }
 
 @media (max-width: 1080px) { .inspiration-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 760px) { .inspiration-grid { grid-template-columns: repeat(2, 1fr); } }

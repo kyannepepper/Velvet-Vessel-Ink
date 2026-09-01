@@ -65,7 +65,7 @@
           <span class="design-card-price">${formatPriceRange(d.price_min, d.price_max)}</span>
           <div class="design-card-actions">
             <button class="btn btn-outline-dark" data-save-toggle>${saved ? 'Saved' : 'Save to My Ideas'}</button>
-            <button class="btn btn-primary" data-use-design>Use This</button>
+            <button class="btn btn-primary" data-use-design>Select Inspiration</button>
           </div>
         </div>
       </div>`;

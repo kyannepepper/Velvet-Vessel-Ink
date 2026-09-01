@@ -23,6 +23,8 @@
     const linksHtml = NAV_LINKS.map(
       (l) => `<li><a href="${l.href}" ${l.page === currentPage ? 'aria-current="page"' : ''}>${l.label}</a></li>`
     ).join('');
+    const phone = window.SITE_CONFIG?.BUSINESS?.phone || '';
+    const phoneDigits = phone.replace(/[^\d+]/g, '');
 
     header.className = 'site-header';
     header.innerHTML = `
@@ -32,6 +34,7 @@
       </a>
       <nav class="main-nav" id="main-nav" aria-label="Primary">
         <ul class="nav-links">${linksHtml}</ul>
+        ${phoneDigits ? `<a class="btn btn-outline-light nav-call-btn" href="tel:${phoneDigits}">Call Now</a>` : ''}
         <a class="btn btn-accent nav-book-btn" href="booking.html">Book Now</a>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle menu">

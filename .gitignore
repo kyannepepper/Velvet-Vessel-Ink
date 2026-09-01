@@ -1,0 +1,7 @@
+# Environment variables / secrets — never commit these
+.env
+.env.*
+!.env.example
+
+# OS/editor cruft
+.DS_Store

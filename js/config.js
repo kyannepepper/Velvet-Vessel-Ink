@@ -15,8 +15,8 @@ const SITE_CONFIG = {
   // Until these are filled in, the site automatically runs on the
   // built-in placeholder data so it's fully demoable out of the box.
   // ---------------------------------------------------------------------
-  SUPABASE_URL: 'https://YOUR-PROJECT-REF.supabase.co',
-  SUPABASE_ANON_KEY: 'YOUR-SUPABASE-ANON-PUBLIC-KEY',
+  SUPABASE_URL: 'https://uvrfzzfalkalwwtglryf.supabase.co',
+  SUPABASE_ANON_KEY: 'sb_publishable_nYuOiH4U7l16olw0hDBpnQ_HaHrGCtU',
 
   // Storage bucket names (created by sql/setup.sql)
   STORAGE: {
@@ -33,7 +33,7 @@ const SITE_CONFIG = {
     artist: 'Megan Klein',
     city: 'St. George, Utah',
     email: 'hello@velvetvesselink.com',
-    phone: '(435) 555-0142',
+    phone: '(435) 900-2078',
     addressLine: 'St. George, Utah · exact studio address shared upon booking',
     instagram: 'https://www.instagram.com/velvetvessel_ink/',
     tiktok: 'https://www.tiktok.com/@velvetvessel.ink',

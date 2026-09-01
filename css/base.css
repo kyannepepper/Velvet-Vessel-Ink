@@ -318,6 +318,7 @@ p.lead { font-size: var(--fs-lead); font-weight: 300; color: var(--text-primary)
 .nav-links a[aria-current="page"]::after { width: 100%; }
 .nav-links a[aria-current="page"] { color: var(--c-taupe); }
 
+.nav-call-btn { margin-left: var(--space-md); }
 .nav-book-btn { margin-left: var(--space-2xs); }
 
 @media (max-width: 960px) {
@@ -345,7 +346,8 @@ p.lead { font-size: var(--fs-lead); font-weight: 300; color: var(--text-primary)
     text-transform: none;
     letter-spacing: 0;
   }
-  .nav-book-btn { margin-left: 0; margin-top: var(--space-md); }
+  .nav-call-btn { margin-left: 0; margin-top: var(--space-md); }
+  .nav-book-btn { margin-left: 0; margin-top: var(--space-sm); }
 }
 
 /* ---------- Footer ---------- */
